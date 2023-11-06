@@ -1,0 +1,29 @@
+package org.example;
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner; // Import the Scanner class to read text files
+
+public class fileOperations {
+   public static doubleLinkedList transferFileDataToDoubleLinkedList(String file) throws FileNotFoundException {
+        try {
+            doubleLinkedList list = new doubleLinkedList();
+            File myObj = new File(file);
+            Scanner myReader = new Scanner(myObj);
+            int count = 0;
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                System.out.println(data);
+                list.insertAscending(count,data);
+                count++;
+            }
+            myReader.close();
+            return list;
+
+        } catch (FileNotFoundException e) {
+
+            throw e;
+        }
+    }
+}
