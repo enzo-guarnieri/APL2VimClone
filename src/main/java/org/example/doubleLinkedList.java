@@ -56,7 +56,7 @@ public class doubleLinkedList {
                     arquivo.append(pAnda.getData() + "\n");
                     pAnda = pAnda.getRight();
                 }
-                System.out.print(pAnda.getData() + "]");
+                System.out.print(pAnda.getData() + "]\n");
                 arquivo.append(pAnda.getData());
 
             }

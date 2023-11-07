@@ -1,8 +1,9 @@
-cu
-bosta
-mouse
-merda
-rola
-bola
-frouxo
-semBola
+texto
+livro
+biblioteca
+cachorro
+gato
+lua
+sol
+terra
+espaco
