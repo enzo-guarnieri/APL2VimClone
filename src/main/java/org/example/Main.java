@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String nomeArquivo = "code.txt";
         doubleLinkedList list = null;
 
 //        doubleLinkedList list = fileOperations.transferFileDataToDoubleLinkedList(nomeArquivo);
@@ -29,17 +28,14 @@ public class Main {
             }
             if (command.startsWith("w")) {
                 String[] commandContent = command.split(" ");
-                try {
+
                     if(list == null){
                         System.out.println("Lista ainda nao foi criada utilize o comando (e) primeiro\n");
                     }else {
                         System.out.println("transferindo conteudo da lista encadeada para o arquivo :" + commandContent[1]);
 
-                        list.transferDataToFile(nomeArquivo);
+                        list.transferDataToFile(commandContent[1]);
                     }
-                }catch (RuntimeException exception){
-                    throw exception;
-                }
             }
         }
     }
