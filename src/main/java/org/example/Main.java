@@ -14,7 +14,7 @@ public class Main {
             System.out.println("digite seu comando:");
             command = input.nextLine();
 
-            if (command.startsWith("e")) {
+            if (command.startsWith(":e")) {
                 try {
                     String[] commandContent = command.split(" ");
 
@@ -24,11 +24,11 @@ public class Main {
                 }
             }
 
-            if (command.startsWith("w")) {
+            if (command.startsWith(":w")) {
                 String[] commandContent = command.split(" ");
 
                     if(list == null){
-                        System.out.println("Lista ainda nao foi criada utilize o comando (e) primeiro\n");
+                        System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
                     }else {
                         System.out.println("transferindo conteudo da lista encadeada para o arquivo: " + commandContent[1]);
 
