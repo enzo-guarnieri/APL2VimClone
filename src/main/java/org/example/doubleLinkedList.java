@@ -153,7 +153,7 @@ public class doubleLinkedList {
             return pAnda;
         }
     }
-
+    public Node getHead() {return this.head;}
 
     // Remove um elemento da DLL
     // retornando verdadeiro ou falso

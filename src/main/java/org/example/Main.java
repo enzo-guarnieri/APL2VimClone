@@ -37,6 +37,61 @@ public class Main {
                         list.transferDataToFile(commandContent[1]);
                     }
             }
+            if (command.startsWith(":x")) {
+                String[] commandContent = command.split(" ");
+                if(list == null){
+                    System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
+                }else {
+                    list.remove(Integer.parseInt(commandContent[1]));
+
+                    System.out.println("Lista atual e"+list.toString());
+                }
+            }
+            if (command.startsWith(":xG")) {
+                String[] commandContent = command.split(" ");
+                if(list == null){
+                    System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
+                }else {
+                    int length = list.getCount();
+                    for (int i = Integer.parseInt(commandContent[1]); i <= length; i++) {
+                        list.remove(i);
+                    }
+
+                    System.out.println("Lista atual e"+list.toString());
+                }
+            }
+            if (command.startsWith(":XG")) {
+                String[] commandContent = command.split(" ");
+                if(list == null){
+                    System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
+                }else {
+                    int length = list.getCount();
+                    for (int i = 0; i <= Integer.parseInt(commandContent[1]); i++) {
+                        list.remove(i);
+                    }
+
+                    System.out.println("Lista atual e"+list.toString());
+                }
+            }
+            if (command.startsWith(":s")) {
+                if (list == null) {
+                    System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
+                } else {
+                    Node current = list.getHead();
+                    int i =1;
+                    do {
+                        for (int j = 1; j <= 10; j++) {
+
+                            System.out.println(i + ". " + current.getData());
+                            current = current.getRight();
+                            if(current == list.getHead()){break;}
+                            i++;
+                        }
+                        System.out.println("\n");
+                    }
+                    while (current != list.getHead());
+                }
+            }
         }
         System.out.println("\nObrigado por usar nosso programa :)\n");
     }
