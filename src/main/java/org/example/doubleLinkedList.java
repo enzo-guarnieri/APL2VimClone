@@ -140,10 +140,11 @@ public class doubleLinkedList {
         while (pAnda.getRight() != this.head){
             pAnda.setKey(count);
             pAnda = pAnda.getRight();
-            if(pAnda.getRight() == this.head){
-                pAnda.setKey(count++);
-            }
+
             count++;
+        }
+        if(pAnda.getRight() == this.head){
+            pAnda.setKey(count++);
         }
     }
     public void print(){

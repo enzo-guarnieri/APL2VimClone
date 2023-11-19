@@ -51,7 +51,7 @@ public class Main {
             }
             if (command.startsWith(":xG")) {
                 String[] commandContent = command.split(" ");
-                if(list == null){
+                if(list == null) {
                     System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
                 }else {
                     int length = list.getCount();
