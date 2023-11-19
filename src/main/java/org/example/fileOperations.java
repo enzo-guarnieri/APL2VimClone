@@ -14,7 +14,7 @@ public class fileOperations {
             int count = 0;
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                System.out.println(data);
+
                 list.insertAscending(count,data);
                 count++;
             }
