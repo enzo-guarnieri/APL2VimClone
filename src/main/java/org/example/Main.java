@@ -19,6 +19,9 @@ public class Main {
                     String[] commandContent = command.split(" ");
 
                     list = fileOperations.transferFileDataToDoubleLinkedList(commandContent[1]);
+                    System.out.println("Criando Lista\n");
+                    list.print();
+                    System.out.println("\nLista criada :)\n");
                 }catch (FileNotFoundException e){
                     System.out.println("Epa! Arquivo nao encontrado. tente novamente\n");
                 }catch (ArrayIndexOutOfBoundsException e){
