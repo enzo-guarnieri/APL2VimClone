@@ -44,7 +44,9 @@ public class Main {
                 }else {
                     list.remove(Integer.parseInt(commandContent[1]));
 
-                    System.out.println("Lista atual e"+list.toString());
+                    System.out.println("Lista atual : \n");
+                    list.reList();
+                    list.print();
                 }
             }
             if (command.startsWith(":xG")) {
@@ -53,11 +55,12 @@ public class Main {
                     System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
                 }else {
                     int length = list.getCount();
-                    for (int i = Integer.parseInt(commandContent[1]); i <= length; i++) {
+                    for (int i = Integer.parseInt(commandContent[1]); i <= length+1; i++) {
                         list.remove(i);
                     }
 
-                    System.out.println("Lista atual e"+list.toString());
+                    System.out.println("Lista atual : \n");
+                    list.print();
                 }
             }
             if (command.startsWith(":XG")) {
@@ -65,12 +68,14 @@ public class Main {
                 if(list == null){
                     System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
                 }else {
-                    int length = list.getCount();
+
                     for (int i = 0; i <= Integer.parseInt(commandContent[1]); i++) {
                         list.remove(i);
                     }
 
-                    System.out.println("Lista atual e"+list.toString());
+                    System.out.println("Lista atual : \n");
+                    list.reList();
+                    list.print();
                 }
             }
             if (command.startsWith(":s")) {

@@ -134,7 +134,29 @@ public class doubleLinkedList {
         return true;
     }
 
+    public void reList(){
+        Node pAnda = this.head;
+        int count = 0;
+        while (pAnda.getRight() != this.head){
+            pAnda.setKey(count);
+            pAnda = pAnda.getRight();
+            if(pAnda.getRight() == this.head){
+                pAnda.setKey(count++);
+            }
+            count++;
+        }
+    }
+    public void print(){
+        Node pAnda = this.head;
 
+        while (pAnda.getRight() != this.head){
+            System.out.println(pAnda.getKey()+"."+pAnda.getData());
+            pAnda = pAnda.getRight();
+            if(pAnda.getRight() == this.head){
+                System.out.println(pAnda.getKey()+"."+pAnda.getData());
+            }
+        }
+    }
 
     // search e retorna o nó de Key passada como parâmetro
     public Node search(int Key){
@@ -143,7 +165,7 @@ public class doubleLinkedList {
 
         // Procura o elemento
         Node pAnda = this.head;
-        while (pAnda.getRight() != this.head && pAnda.getKey() != Key){
+        while (pAnda.getRight() != this.head){
             pAnda = pAnda.getRight();
         }
 
