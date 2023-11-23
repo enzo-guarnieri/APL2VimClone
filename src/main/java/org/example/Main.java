@@ -100,27 +100,37 @@ public class Main {
             }
             if (command.startsWith(":s")) {
                 try {
+                    String[] commandContent = command.split(" ");
                     if (list == null) {
                         System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
                     } else {
-                        Node current = list.getHead();
-                        int i = 1;
-                        do {
-                            for (int j = 1; j <= 10; j++) {
+                        if (commandContent.length == 3) {
+                            String inicio = commandContent[1];
+                            String fim = commandContent[2];
 
-                                System.out.println(i + ". " + current.getData());
-                                current = current.getRight();
-                                if (current == list.getHead()) {
-                                    break;
+                            System.out.println("teste\n"+inicio+" "+ fim);
+
+                        } else {
+
+                            Node current = list.getHead();
+                            int i = 1;
+                            do {
+                                for (int j = 1; j <= 10; j++) {
+
+                                    System.out.println(i + ". " + current.getData());
+                                    current = current.getRight();
+                                    if (current == list.getHead()) {
+                                        break;
+                                    }
+                                    i++;
                                 }
-                                i++;
+                                System.out.println("\n");
                             }
-                            System.out.println("\n");
+                            while (current != list.getHead());
                         }
-                        while (current != list.getHead());
                     }
                 }catch (Exception exception){
-                    System.out.println("Epa algo deu errado tente novamente\n");
+                    System.out.println(exception+"Epa algo deu errado tente novamente\n");
                 }
             }
             if (command.startsWith(":/")) {
