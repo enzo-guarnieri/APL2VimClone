@@ -11,7 +11,7 @@ public class fileOperations {
             doubleLinkedList list = new doubleLinkedList();
             File myObj = new File(file);
             Scanner myReader = new Scanner(myObj);
-            int count = 0;
+            int count = 1;
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
 

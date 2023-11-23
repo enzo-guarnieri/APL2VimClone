@@ -136,7 +136,7 @@ public class doubleLinkedList {
 
     public void reList(){
         Node pAnda = this.head;
-        int count = 0;
+        int count = 1;
         while (pAnda.getRight() != this.head){
             pAnda.setKey(count);
             pAnda = pAnda.getRight();

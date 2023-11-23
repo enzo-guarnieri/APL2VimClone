@@ -72,7 +72,7 @@ public class Main {
                     System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
                 }else {
 
-                    for (int i = 0; i <= Integer.parseInt(commandContent[1]); i++) {
+                    for (int i = 1; i <= Integer.parseInt(commandContent[1]); i++) {
                         list.remove(i);
                     }
 
