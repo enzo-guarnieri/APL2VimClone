@@ -7,8 +7,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         doubleLinkedList list = null;
+        doubleLinkedList transferArea = null;
 
         Scanner input = new Scanner(System.in);
+        transferArea.insertAscending(1, "teste1");
+        transferArea.insertAscending(2, "teste2");
+        transferArea.insertAscending(3, "teste3");
+        transferArea.insertAscending(4, "teste4");
+
         String command = "i";
         while(!command.equals("o")) {
             System.out.println("digite seu comando:");
