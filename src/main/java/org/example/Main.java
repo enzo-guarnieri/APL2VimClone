@@ -11,7 +11,9 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         String command = "i";
-        while(!command.equals("o")) {
+        boolean functional = true;
+        System.out.println("(use :help para ver todos os comandos disponíveis).");
+        while(functional) {
             System.out.println("digite seu comando:");
             command = input.nextLine();
 
@@ -103,37 +105,48 @@ public class Main {
                     String[] commandContent = command.split(" ");
                     if (list == null) {
                         System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
-                    } else {
-                        if (commandContent.length == 3) {
-                            String inicio = commandContent[1];
-                            String fim = commandContent[2];
-
-                            System.out.println("teste\n"+inicio+" "+ fim);
-
-                        } else {
-
-                            Node current = list.getHead();
-                            int i = 1;
-                            do {
-                                for (int j = 1; j <= 10; j++) {
-
-                                    System.out.println(i + ". " + current.getData());
+                    } else if (commandContent.length == 3) {
+                        Node current = list.getHead();
+                        int length = list.getCount();
+                        int i = Integer.parseInt(commandContent[1]);
+                        for (int k = 1; k <= length; k++) {
+                            if (k == Integer.parseInt(commandContent[1])) {
+                                for (int m = Integer.parseInt(commandContent[1]); m <= Integer.parseInt(commandContent[2]); m++) {
+                                    System.out.println(i + ". " +current.getData());
                                     current = current.getRight();
-                                    if (current == list.getHead()) {
-                                        break;
-                                    }
                                     i++;
+                                    if(i%11 == 0){
+                                        System.out.println("\n");
+                                    }
                                 }
-                                System.out.println("\n");
                             }
-                            while (current != list.getHead());
+                            current = current.getRight();
                         }
+                    }
+                    else {
+
+                        Node current = list.getHead();
+                        int i = 1;
+                        do {
+                            for (int j = 1; j <= 10; j++) {
+
+                                System.out.println(i + ". " + current.getData());
+                                current = current.getRight();
+                                if (current == list.getHead()) {
+                                    break;
+                                }
+                                i++;
+                            }
+                            System.out.println("\n");
+                        }
+                        while (current != list.getHead());
                     }
                 }catch (Exception exception){
                     System.out.println(exception+"Epa algo deu errado tente novamente\n");
                 }
             }
             if (command.startsWith(":/")) {
+
                 try {
                     String[] commandContent = command.split(" ");
                     if (list == null) {
@@ -176,6 +189,43 @@ public class Main {
                 } catch (ArrayIndexOutOfBoundsException exception) {
                     System.out.println("Epa algo deu errado tente novamente por favor\n");
                 }
+            }
+            if(command.startsWith(":q!")){
+                try {
+                    System.out.println("Tem certeza que quer finalizar o programa? Y:SIM | N:NAO\n");
+                    Scanner Input = new Scanner(System.in);
+                    String answear  = Input.nextLine();
+                    if (Objects.equals(answear, "Y")){
+                        functional =false;
+                    }
+                }catch (Exception exception){
+                    System.out.println("Epa algo deu errado tente novamente por favor\n");
+                }
+            }
+            if (command.startsWith(":help")){
+                System.out.println("Digite ':e', para abrir um arquivo de nome “nomeArq.txt”, lê o seu conteúdo e armazena" +
+                        "cada linha em um Node da lista encadeada circular(é necessário utilizar esse comando para executar os outros comandos). \n");
+                System.out.println("Digite ':w', para salvar o conteúdo da lista encadeada circular em um arquivo de nome “nomeArq.txt”.\n");
+                System.out.println("Digite ':q!', para sair do programa sem salvar as modificações realizadas.\n");
+                System.out.println("Digite ':v', para marcar um texto da lista (valor1 ao valor2), se ambos forem válidos.\n");
+                System.out.println("Digite ':y', para copiar o texto marcado em ':v' para uma lista de Cópia.\n");
+                System.out.println("Digite ':c', para Ccortar o texto marcado.\n");
+                System.out.println("Digite ':p', para colar o texto marcado a partir da linha inicial(valor), se o valor for válido. \n");
+                System.out.println("Digite ':s', para exibir na tela o conteúdo do programa fonte completo de 10 em 10 linhas, caso o usuário " +
+                        "deseje, pode escrever o mesmo comando seguido \n de (valor1 e valor2) para obter apenas o conteúdo do valor1 até o valor2," +
+                        " em ambos os casos as linhas serão exibidas e respeitadas.\n");
+                System.out.println("Digite ':x', para apagar a linha de posição (valor) da lista.\n");
+                System.out.println("Digite ':xG', para apagar as linhas da posição (valor) até o final da lista.\n");
+                System.out.println("Digite ':XG', para apagar as linhas da posição (valor) até o início da lista.\n");
+                System.out.println("Digite ':/', para percorrer a lista, localizar a(s) linha(s) (com a correspondente numeração da linha)" +
+                        " na(s) qual(is) o (valor), indicado após o comando, encontra-se, caso o usuário queira trocar o(s) valor(es) por outro," +
+                        " é só indicar (valor1 e valor2) após o comando.\n");
+                System.out.println("Digite ':a', para permitir a edição de uma ou mais novas linhas e inserir na lista depois da\n" +
+                        "posição (valor). O término da entrada é dada por um “:a” em uma linha vazia. Quando a lista está vazia, insere a partir do início da lista.\n");
+                System.out.println("Digite ':i', para Permitir a inserção da linha [conteudo da nova linha] e inserir na lista\n" +
+                        "antes da posição (valor) com a seguinte sintaxe (valor[conteudo da nova linha]). Quando a lista está vazia, insere no início da lista.\n");
+                System.out.println("Todos os códigos que possuem a indicação (valores) devem ser escritos seguindo o exemplo, :s 3 5.\n");
+
             }
         }
         System.out.println("\nObrigado por usar nosso programa :)\n");
