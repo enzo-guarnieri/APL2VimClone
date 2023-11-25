@@ -47,6 +47,7 @@ public class Main {
                     System.out.println("Epa! informe o arquivo em que deseja escrever\n");
                 }
             }
+
             if (command.startsWith(":x")) {
                 try {
                     String[] commandContent = command.split(" ");
@@ -105,19 +106,25 @@ public class Main {
                     String[] commandContent = command.split(" ");
                     if (list == null) {
                         System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
+                        
+                    } else if (Integer.parseInt(commandContent[2]) > list.getCount() || Integer.parseInt(commandContent[1]) < 1 || Integer.parseInt(commandContent[2]) < 1 ) {
+                        System.out.println("Epa digite uma linha valida\n");
                     } else if (commandContent.length == 3) {
                         Node current = list.getHead();
                         int length = list.getCount();
                         int i = Integer.parseInt(commandContent[1]);
+                        int j =1;
                         for (int k = 1; k <= length; k++) {
                             if (k == Integer.parseInt(commandContent[1])) {
                                 for (int m = Integer.parseInt(commandContent[1]); m <= Integer.parseInt(commandContent[2]); m++) {
                                     System.out.println(i + ". " +current.getData());
                                     current = current.getRight();
                                     i++;
-                                    if(i%11 == 0){
+
+                                    if(j%10 == 0){
                                         System.out.println("\n");
                                     }
+                                    j++;
                                 }
                             }
                             current = current.getRight();
@@ -208,7 +215,7 @@ public class Main {
                     if (list == null) {
                         System.out.println("Lista ainda nao foi criada utilize o comando (:e) primeiro\n");
                     } else {
-                        System.out.println("Digite as novas linhas. Após digitar as novas linhas, utilize ':a' em uma linha vazia.");
+                        System.out.println("Digite as novas linhas. Após digitar as novas linhas, utilize ':a' para terminar.");
                         String newLine = input.nextLine();
                         while (!newLine.equals(":a")) {
                             list.insertAt(posLin, newLine);
