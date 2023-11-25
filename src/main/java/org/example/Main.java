@@ -247,6 +247,130 @@ public class Main {
                     System.out.println("Epa algo deu errado, após o ':i' use um número da linha.\n");
                 }
             }
+              // ---------------------------------------------------------------// Enzo
+            if (command.startsWith(":q!")) {
+                String[] commandContent = command.split(" ");
+                if(commandContent.length != 1) {
+                	System.out.println("Numero de argumentos diferente do que esperado, utilize o comando \":help \" para mais informações ");
+                	
+                }
+                else {
+                	String resp;
+                	do {
+                		System.out.println("Você deseja sair sem salvar ? [y][n]");
+                		resp = input.nextLine();
+                		resp.toLowerCase();
+                	}while(!(resp.charAt(0) == 'y') && !(resp.charAt(0) == 'n'));
+                	if(resp.charAt(0) == 'y') {
+                		input.close();
+                		System.out.println("Encerrando o programa....");
+                		System.out.println("Programa encerrado com sucesso!");
+                		return;
+                	}
+                }
+            }
+            // ---------------------------------------------------------------//
+            if (command.startsWith(":v")) {
+                try {
+                    String[] commandContent = command.split(" ");
+                    if(commandContent.length != 3) {
+                    	System.out.println("Numero de argumentos diferente do que esperado, utilize o comando \":help \" para mais informações ");
+                    }
+                    else {
+                    	int arg1 = Integer.parseInt(commandContent[1]);
+                    	int arg2 = Integer.parseInt(commandContent[2]);
+                    	if( arg1 < 1 || arg2 > list.getCount()) throw new SecurityException();
+                    	if(arg1 > arg2) System.out.println("Valores invalidos.");
+                    	else { //copia esse intervalo para ponteiros
+                    		transInico = arg1;
+                    		transFim = arg2;
+                    	}
+                    }
+                }catch (SecurityException e){
+                    System.out.println("Valores fora da lista foram passados.");
+                }
+            }
+         // ---------------------------------------------------------------//
+            if (command.startsWith(":y")) {
+                try {
+                    String[] commandContent = command.split(" ");
+                    if(commandContent.length != 1) {
+                    	System.out.println("Numero de argumentos diferente do que esperado, utilize o comando \":help \" para mais informações ");
+                    	
+                    }
+                    else {
+                    	Node pAnda = list.search(transInico);
+                    	Node fim = list.search(transFim);
+                    	int count=1;
+                    	while(pAnda != fim) {
+                    		transferArea.insertAscending(count++, pAnda.getData());
+                    		pAnda = pAnda.getRight();
+                    	}
+                    	transferArea.insertAscending(count++, fim.getData());
+                    	System.out.println("O testo foi copiado para a area de transferencia com sucesso!");
+                    }
+                }catch (SecurityException e){
+                    System.out.println("Um erro ocoreu. Use o comando :help para mais informações sobre esse comando.");
+                }
+            }
+            
+         // ---------------------------------------------------------------//
+            if (command.startsWith(":c")) {
+                try {
+                    String[] commandContent = command.split(" ");
+                    if(commandContent.length != 1) {
+                    	System.out.println("Numero de argumentos diferente do que esperado, utilize o comando \":help \" para mais informações ");
+                    	
+                    }
+                    else {
+                    	for(int i=transInico; i<=transFim; i++) {
+                    		list.remove(i);
+                    	}
+                    	list.reList();
+                    	System.out.println("Linhas removidas com sucesso.");
+                    }
+                }catch (SecurityException e){
+                    System.out.println("Um erro ocoreu. Use o comando :help para mais informações sobre esse comando.");
+                }
+            }
+            
+            
+            
+         // ---------------------------------------------------------------//
+            if (command.startsWith(":p")) {
+                try {
+                    String[] commandContent = command.split(" ");
+                    if(commandContent.length != 2) {
+                    	System.out.println("Numero de argumentos diferente do que esperado, utilize o comando \":help \" para mais informações ");
+                    }
+                    else {
+                    	int line = Integer.parseInt(commandContent[1]);
+                    	if(line < 0 || line > list.getCount()) System.out.println("Um valor fora da lista foi passado.");
+                    	else {
+                    		Node inicio = list.search(line);
+                    		Node tail = transferArea.getTail();
+                    		Node pAnda = tail;
+                    		do {
+                    			list.insertPos(inicio, pAnda.getData());
+                    			pAnda = pAnda.getLeft();
+                    		}while(pAnda != tail);
+                    		list.reList();
+                    		System.out.println(list);
+
+                    	}
+                    }
+                }catch (SecurityException e){
+                    System.out.println("Um erro ocoreu. Use o comando :help para mais informações sobre esse comando.");
+                }
+            }
+            
+            
+            
+         // ---------------------------------------------------------------//
+
+
+
+            
             if (command.startsWith(":help")){
                 System.out.println("Digite ':e', para abrir um arquivo de nome “nomeArq.txt”, lê o seu conteúdo e armazena" +
                         "cada linha em um Node da lista encadeada circular(é necessário utilizar esse comando para executar os outros comandos). \n");
